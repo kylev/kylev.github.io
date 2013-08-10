@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <title>Mindcrack Streams</title>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Playing</th>
+      <th>Description</th>
+      <th>Viewers</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
+<script src="cw.js"></script>
+<script type="text/javascript">
+  Twitch.init({clientId: 'dczae88noddmxhlth2kmd35atx4yfn8'}, function(error, status) {
+    console.log("Twitch loaded with error " + error + " and status " + status);
+    CW.setupTable('table');
+    CW.updateTable();
+  });
+</script>
+
+</body></html>
