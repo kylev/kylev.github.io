@@ -1,68 +1,61 @@
-var CW = {};
+(function(cwatch, $, undefined) {
 
-CW.mclist = {
-  'millbee': "Millbee",
-  'mhykol': "Mykhol",
-  'vintagebeef': "Vintage Beef",
-  'nebris': "Nebris",
-  'wcs_america': "Faker 1",
-  'dota2ti': "Faker Mommy"
-};
-
-CW.mcers = (function (obj) {
-  var keys = []
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-        keys.push(key);
-    }
-  }
-  return keys;
-})(CW.mclist).sort();
-
-CW.active = {}
-
-CW.setupTable = function (tbody_selector) {
-  this.mcers.forEach(function (user) {
-    console.log("Setup" + user);
-    $(tbody_selector).append("<tr><td>" + user + "</td></tr>");
-  });
-  $("h2 span.counter").html(0);
-};
-
-CW.updateTable = function () {
-  this.mcers.forEach (function (user) {
-    console.log(user);
-    CW.twichStreamForUser(user);
-  });
-};
-
-CW.twichStreamForUser = function(user) {
-  Twitch.api({method: 'streams/' + user},
-    function (error, data) {
-      if (error) {
-        console.log(user + " stream fetch error:" + error);
-        return;
-      }
-
-      if (data.stream) {
-        console.log(CW.transformStream(data.stream));
-      } else {
-        console.log(user + " is not active");
-      }
-
-    }
-  );
-};
-
-// Transform a stream response into something simpler
-CW.transformStream = function (so) {
-  if (!so) return {};
-  return {
-    name: so.name,
-    game: so.game,
-    viewers: so.viewers,
-    display_name: so.channel.display_name,
-    url: so.channel.url,
-    status: so.channel.status
+  var mclist = {
+    'millbee': "Millbee",
+    'mhykol': "Mykhol",
+    'vintagebeef': "Vintage Beef",
+    'nebris': "Nebris",
+    'wcs_america': "Faker 1",
+    'dota2ti': "Faker Mommy"
   };
-};
+
+  var mcers = (function (obj) {
+      var keys = []
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            keys.push(key);
+        }
+      }
+      return keys;
+  })(mclist).sort();
+
+  var active = {};
+
+  cwatch.updateTable = function () {
+    mcers.forEach (function (user) {
+      console.log(user);
+      twichInfoForUser(user, console.log);
+    });
+  };
+
+  // Transform a stream response into something simpler
+  function transformStream(so) {
+    return {
+      name: so.name,
+      game: so.game,
+      viewers: so.viewers,
+      display_name: so.channel.display_name,
+      url: so.channel.url,
+      status: so.channel.status
+    };
+  };
+
+  function twichInfoForUser(user, cb) {
+    Twitch.api({method: 'streams/' + user},
+      function (error, data) {
+        if (error) {
+          console.log(user + " stream fetch error: " + error);
+          return;
+        }
+
+        if (data.stream) {
+          console.log(transformStream(data.stream));
+        } else {
+          console.log(user + " is not active");
+        }
+
+      }
+    );
+  };
+
+}(window.cwatch = window.cwatch || {}, jQuery));
