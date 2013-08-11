@@ -19,11 +19,14 @@ CW.mcers = (function (obj) {
   return keys;
 })(CW.mclist).sort();
 
+CW.active = {}
+
 CW.setupTable = function (tbody_selector) {
   this.mcers.forEach(function (user) {
     console.log("Setup" + user);
     $(tbody_selector).append("<tr><td>" + user + "</td></tr>");
   });
+  $("h2 span.counter").html(0);
 };
 
 CW.updateTable = function () {
@@ -35,8 +38,18 @@ CW.updateTable = function () {
 
 CW.twichStreamForUser = function(user) {
   Twitch.api({method: 'streams/' + user},
-    function (error, data) { 
-      console.log(CW.transformStream(data.stream));
+    function (error, data) {
+      if (error) {
+        console.log(user + " stream fetch error:" + error);
+        return;
+      }
+
+      if (data.stream) {
+        console.log(CW.transformStream(data.stream));
+      } else {
+        console.log(user + " is not active");
+      }
+
     }
   );
 };
