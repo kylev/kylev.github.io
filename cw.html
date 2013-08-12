@@ -8,7 +8,7 @@
 <body>
 
 <h1>Mindcrack</h1>
-<h2><span class="counter">0</span> Active Livestream</h2>
+<h2><span class="counter">0</span> Active Livestreams</h2>
 
 <table>
   <thead>
@@ -29,7 +29,7 @@
 <script type="text/javascript">
   Twitch.init({clientId: 'dczae88noddmxhlth2kmd35atx4yfn8'}, function(error, status) {
     console.log("Twitch loaded with error " + error + " and status " + status);
-    cwatch.updateTable();
+    cwatch.init();
   });
 </script>
 

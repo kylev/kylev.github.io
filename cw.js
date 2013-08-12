@@ -1,32 +1,63 @@
 (function(cwatch, $, undefined) {
 
-  var mclist = {
+  var mcList = {
     'millbee': "Millbee",
     'mhykol': "Mykhol",
     'vintagebeef': "Vintage Beef",
     'nebris': "Nebris",
     'wcs_america': "Faker 1",
-    'dota2ti': "Faker Mommy"
+    'leveluplive': "Faker Mommy"
   };
 
-  var mcers = (function (obj) {
-      var keys = []
-      for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            keys.push(key);
-        }
+  var mcActive = {};
+
+  var pollTime = 5 * 60 * 1000;
+
+  cwatch.init = function () {
+    var accounts = []
+    for (var key in mcList) {
+      if (mcList.hasOwnProperty(key)) {
+        accounts.push(key);
       }
-      return keys;
-  })(mclist).sort();
+    }
 
-  var active = {};
-
-  cwatch.updateTable = function () {
-    mcers.forEach (function (user) {
-      console.log(user);
-      twichInfoForUser(user, console.log);
+    $.each(accounts, function (index, item) {
+      fetchTwitchInfo(item);
     });
   };
+
+  cwatch.poke = function() {
+    return mcActive;
+  };
+
+  function fetchTwitchInfo(user) {
+    Twitch.api({method: 'streams/' + user}, function (error, data) { handleTwitchData(user, error, data); });
+    setTimeout(function () { fetchTwitchInfo(user); }, pollTime);
+  }
+
+  function handleTwitchData(user, error, data) {
+    if (error) {
+      return;
+    }
+
+    var changed = false;
+    if (data.stream) {
+      if (mcActive[user] === undefined) {
+        changed = true;
+      }
+      mcActive[user] = transformStream(data.stream);
+    } else {
+      if (mcActive[user] !== undefined) {
+        changed = true;
+      }
+      mcActive[user] = undefined;
+    }
+
+    if (changed) {
+      freshenHtml();
+      console.log("It changed for " + user);      
+    }
+  }
 
   // Transform a stream response into something simpler
   function transformStream(so) {
@@ -38,24 +69,9 @@
       url: so.channel.url,
       status: so.channel.status
     };
-  };
+  }
 
-  function twichInfoForUser(user, cb) {
-    Twitch.api({method: 'streams/' + user},
-      function (error, data) {
-        if (error) {
-          console.log(user + " stream fetch error: " + error);
-          return;
-        }
+  function freshenHtml() {
 
-        if (data.stream) {
-          console.log(transformStream(data.stream));
-        } else {
-          console.log(user + " is not active");
-        }
-
-      }
-    );
-  };
-
+  }
 }(window.cwatch = window.cwatch || {}, jQuery));
