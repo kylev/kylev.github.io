@@ -25,13 +25,6 @@
     "thejimslp": "TheJims",
     "vintagebeef": "Vintage Beef",
     "zisteau": "Zisteau",
-
-    'straymav': "Faker 1",
-    'leveluplive': "Faker Mommy",
-    'finestko': "Another",
-    'pandaxgaming': "Yet Again",
-    'prod1gyx': "Blah",
-    'scarletr0se': "Scarlet Rose"
   };
 
   var mcSorted = [];
