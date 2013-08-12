@@ -47,6 +47,7 @@
         accounts.push(key);
       }
     }
+    mcSorted = accounts.sort();
 
     $.each(accounts, function (index, item) {
       fetchTwitchInfo(item);
@@ -70,26 +71,25 @@
     var changed = false;
     if (data.stream) {
       if (mcActive[user] === undefined) {
-        changed = true;
+        mcOnline++;
+        mcActive[user] = transformStream(data.stream);
+        addToTable(user, mcActive[user]);
       }
-      mcActive[user] = transformStream(data.stream);
     } else {
       if (mcActive[user] !== undefined) {
-        changed = true;
+        mcOnline--;
+        removeFromTable(user);
       }
       mcActive[user] = undefined;
     }
 
-    if (changed) {
-      freshenHtml();
-      console.log("It changed for " + user);      
-    }
+    $("div.updated span").text(new Date());
   }
 
   // Transform a stream response into something simpler
   function transformStream(so) {
     return {
-      name: so.name,
+      name: so.channel.name,
       game: so.game,
       viewers: so.viewers,
       display_name: so.channel.display_name,
@@ -98,7 +98,37 @@
     };
   }
 
-  function freshenHtml() {
+  function addToTable(user, data) {
+    var link = "<a href='" + data.url + "'>" + mcList[user] + "</a>";
+    var cells = "<td>" + [link, data.game, data.status, data.viewers].join("</td><td>") + "</td>";
+    var row = $("<tr>", {"data-user": user}).append(cells);
+    $("table.streamers").append(row);
 
+    updateOtherData();
+  }
+
+  function removeFromTable(user) {
+    console.log("removing " + user);
+    $("table.streamers tr[data-user'" + user + "']").remove();
+
+    updateOtherData();
+  }
+
+  function updateOtherData() {
+    var offlineLinks = []
+    for (var i = 0; i < mcSorted.length; i++) {
+      if (mcActive[mcSorted[i]] === undefined) {
+        offlineLinks.push("<a href='http://www.twitch.tv/" + mcSorted[i] + "'>" + mcList[mcSorted[i]] + "</a>");
+      }
+    }
+
+    $("div.offline p").html(offlineLinks.join(", "))
+    $("h2 span.counter").html(mcOnline);
+
+    var title = "Mindcrack Livestreams"
+    if (mcOnline > 0) {
+      title = "(" + mcOnline + ") " + title;
+    }
+    document.title = title
   }
 }(window.cwatch = window.cwatch || {}, jQuery));
