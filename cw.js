@@ -36,7 +36,6 @@
 
   var mcSorted = [];
   var mcActive = {};
-  var mcOnline = 0;
 
   var pollTime = 5 * 60 * 1000;
 
@@ -54,9 +53,13 @@
     });
   };
 
+  /*
+  // I'm a lazy debugger.
   cwatch.poke = function() {
+    updateOtherData();
     return mcActive;
   };
+  */
 
   function fetchTwitchInfo(user) {
     Twitch.api({method: 'streams/' + user}, function (error, data) { handleTwitchData(user, error, data); });
@@ -71,13 +74,11 @@
     var changed = false;
     if (data.stream) {
       if (mcActive[user] === undefined) {
-        mcOnline++;
         mcActive[user] = transformStream(data.stream);
         addToTable(user, mcActive[user]);
       }
     } else {
       if (mcActive[user] !== undefined) {
-        mcOnline--;
         removeFromTable(user);
       }
       mcActive[user] = undefined;
@@ -116,9 +117,12 @@
 
   function updateOtherData() {
     var offlineLinks = []
+    var mcOnline = 0;
     for (var i = 0; i < mcSorted.length; i++) {
       if (mcActive[mcSorted[i]] === undefined) {
         offlineLinks.push("<a href='http://www.twitch.tv/" + mcSorted[i] + "'>" + mcList[mcSorted[i]] + "</a>");
+      } else {
+        mcOnline++;
       }
     }
 
