@@ -1,17 +1,44 @@
 (function(cwatch, $, undefined) {
 
   var mcList = {
-    'millbee': "Millbee",
-    'mhykol': "Mykhol",
-    'vintagebeef': "Vintage Beef",
-    'nebris': "Nebris",
-    'wcs_america': "Faker 1",
-    'leveluplive': "Faker Mommy"
+    "anderzel": "AnderZEL",
+    "mc_arkas": "Arkas",
+    "avidyazen": "Avidya",
+    "w92baj": "Baj",
+    "bdoubleo": "BdoubleO",
+    "blamethecontroller": "BlameTC",
+    "denialtv": "BlameTC (DenialTV)",
+    "docm77live": "Docm",
+    "ethotv": "Etho",
+    "generikb": "GenerikB",
+    "guude": "Guude",
+    "jsano19": "Jsano",
+    "kurtjmac": "Kurt",
+    "supermcgamer": "MCGamer",
+    "millbee": "Millbee",
+    "mhykol": "Mhykol",
+    "nebris": "Nebris",
+    "pakratt0013": "Pakratt",
+    "pauseunpause": "Pause",
+    "pyropuncher": "Pyrao",
+    "shreeyamnet": "Shree",
+    "thejimslp": "TheJims",
+    "vintagebeef": "Vintage Beef",
+    "zisteau": "Zisteau",
+
+    'straymav': "Faker 1",
+    'leveluplive': "Faker Mommy",
+    'finestko': "Another",
+    'pandaxgaming': "Yet Again",
+    'prod1gyx': "Blah",
+    'scarletr0se': "Scarlet Rose"
   };
 
+  var mcSorted = [];
   var mcActive = {};
+  var mcOnline = 0;
 
-  var pollTime = 5 * 60 * 1000;
+  var pollTime = 15 * 1000;
 
   cwatch.init = function () {
     var accounts = []
