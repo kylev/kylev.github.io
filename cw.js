@@ -38,7 +38,7 @@
   var mcActive = {};
   var mcOnline = 0;
 
-  var pollTime = 15 * 1000;
+  var pollTime = 5 * 60 * 1000;
 
   cwatch.init = function () {
     var accounts = []
