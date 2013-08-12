@@ -110,10 +110,12 @@ body {
 
 h1 {
   font-size:2em;
+  text-align:center;
 }
 
 h2 {
   font-size:1.5em;
+  text-align:center;
 }
 
 table {
@@ -135,3 +137,11 @@ td {
   padding:8px 2px;
 }
 
+a {
+  color:#FDFFFC;
+  text-decoration:none;
+}
+
+.offline, .offline a {
+  color:#345b71;
+}
