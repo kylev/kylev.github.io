@@ -72,9 +72,9 @@
       }
     } else {
       if (mcActive[user] !== undefined) {
+        mcActive[user] = undefined;
         removeFromTable(user);
       }
-      mcActive[user] = undefined;
     }
 
     $("div.updated span").text(new Date());
