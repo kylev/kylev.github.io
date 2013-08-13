@@ -108,17 +108,23 @@ body {
   font-family:"Open Sans", sans-serif;
 }
 
+#container {
+  width:720px;
+  margin:0 auto;
+}
+
 h1 {
-  font-size:2em;
+  font-size:48px;
   text-align:center;
+  margin-top:20px;
 }
 
 h2 {
-  font-size:1.5em;
+  font-size:20px;
   text-align:center;
 }
 
-table {
+table.streamers {
   background:#5e837b;
   margin:30px auto;
   padding:15px;
