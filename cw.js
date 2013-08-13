@@ -41,18 +41,11 @@
     }
     mcSorted = accounts.sort();
 
+    updateOtherData(); // Pre-fill other data
     $.each(accounts, function (index, item) {
       fetchTwitchInfo(item);
     });
   };
-
-  /*
-  // I'm a lazy debugger.
-  cwatch.poke = function() {
-    updateOtherData();
-    return mcActive;
-  };
-  */
 
   function fetchTwitchInfo(user) {
     Twitch.api({method: 'streams/' + user}, function (error, data) { handleTwitchData(user, error, data); });
