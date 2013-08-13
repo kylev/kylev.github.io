@@ -66,9 +66,13 @@
 
     var changed = false;
     if (data.stream) {
-      if (mcActive[user] === undefined) {
-        mcActive[user] = transformStream(data.stream);
+      var joined = mcActive[user] === undefined;
+      mcActive[user] = transformStream(data.stream);
+
+      if (joined) {
         addToTable(user, mcActive[user]);
+      } else {
+        freshenRow(user, mcActive[user]);
       }
     } else {
       if (mcActive[user] !== undefined) {
@@ -93,12 +97,19 @@
   }
 
   function addToTable(user, data) {
-    var link = "<a href='" + data.url + "'>" + mcList[user] + "</a>";
-    var cells = "<td>" + [link, data.game, data.status, data.viewers].join("</td><td>") + "</td>";
-    var row = $("<tr>", {"data-user": user}).append(cells);
-    $("table.streamers").append(row);
+    $("table.streamers").append(streamerHtmlRow(user, data));
 
     updateOtherData();
+  }
+
+  function freshenRow(user, data) {
+    $("table.streamers tr[data-user='" + user + "']").replaceWith(streamerHtmlRow(user, data));
+  }
+
+  function streamerHtmlRow(user, data) {
+    var link = "<a href='" + data.url + "'>" + mcList[user] + "</a>";
+    var cells = "<td>" + [link, data.game, data.status, data.viewers].join("</td><td>") + "</td>";
+    return $("<tr>", {"data-user": user}).append(cells);
   }
 
   function removeFromTable(user) {
