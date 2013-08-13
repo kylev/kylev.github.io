@@ -102,7 +102,6 @@
   }
 
   function removeFromTable(user) {
-    console.log("removing " + user);
     $("table.streamers tr[data-user='" + user + "']").remove();
 
     updateOtherData();
