@@ -24,7 +24,7 @@
     "shreeyamnet": "Shree",
     "thejimslp": "TheJims",
     "vintagebeef": "Vintage Beef",
-    "zisteau": "Zisteau",
+    "zisteau": "Zisteau"
   };
 
   var mcSorted = [];
