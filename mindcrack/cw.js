@@ -59,7 +59,7 @@
 
   function handleTwitchData(user, error, data) {
     if (error) {
-      _gaq.push(['_trackEvent', 'Automated', 'FetchTwitchTVError', user]);
+      _gaq.push(['_trackEvent', 'Automated', 'FetchTwitchTVError', error.message]);
       return;
     }
 
