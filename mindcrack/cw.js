@@ -33,27 +33,33 @@
   var pollTime = 5 * 60 * 1000;
 
   cwatch.init = function () {
-    var accounts = []
     for (var key in mcList) {
       if (mcList.hasOwnProperty(key)) {
-        accounts.push(key);
+        mcSorted.push(key);
       }
     }
-    mcSorted = accounts.sort();
+    mcSorted.sort();
 
     updateOtherData(); // Pre-fill other data
-    $.each(accounts, function (index, item) {
+    fetchAllTwitchInfo();
+  };
+
+  function fetchAllTwitchInfo() {
+    $.each(mcSorted, function (index, item) {
       fetchTwitchInfo(item);
     });
-  };
+
+    setTimeout(function () { fetchAllTwitchInfo(); }, pollTime);
+    _gaq.push(['_trackEvent', 'Automated', 'FetchTwitchTV']);
+  }
 
   function fetchTwitchInfo(user) {
     Twitch.api({method: 'streams/' + user}, function (error, data) { handleTwitchData(user, error, data); });
-    setTimeout(function () { fetchTwitchInfo(user); }, pollTime);
   }
 
   function handleTwitchData(user, error, data) {
     if (error) {
+      _gaq.push(['_trackEvent', 'Automated', 'FetchTwitchTVError', user]);
       return;
     }
 
