@@ -2,6 +2,7 @@
 
   var mcList = {
     "anderzel": "AnderZEL",
+    "adlingtontplays", "Adlington",
     "mc_arkas": "Arkas",
     "avidyazen": "Avidya",
     "w92baj": "Baj",
