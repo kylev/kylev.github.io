@@ -20,6 +20,7 @@
     "mhykol": "Mhykol",
     "nebris": "Nebris",
     "pakratt0013": "Pakratt",
+    "paulsoaresjr": "PaulSoaresJr",
     "pauseunpause": "Pause",
     "pyropuncher": "Pyrao",
     "shreeyamnet": "Shree",
