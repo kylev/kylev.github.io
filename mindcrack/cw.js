@@ -32,7 +32,7 @@
   var mcSorted = [];
   var mcActive = {};
 
-  var pollTime = 5 * 60 * 1000;
+  var pollTime = 3 * 60 * 1000;
 
   cwatch.init = function () {
     for (var key in mcList) {
