@@ -23,7 +23,7 @@
     "paulsoaresjr": "PaulSoaresJr",
     "pauseunpause": "Pause",
     "pyropuncher": "Pyrao",
-    "shreeyamnet": "Shree",
+    "sethbling": "SethBling",
     "thejimslp": "TheJims",
     "vintagebeef": "Vintage Beef",
     "zisteau": "Zisteau"
