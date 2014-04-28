@@ -52,7 +52,7 @@
     });
 
     setTimeout(function () { fetchAllTwitchInfo(); }, pollTime);
-    _gaq.push(['_trackEvent', 'Automated', 'FetchTwitchTV']);
+    ga('send', 'event', 'Automated', 'FetchTwitchTV');
   }
 
   function fetchTwitchInfo(user) {
@@ -61,7 +61,7 @@
 
   function handleTwitchData(user, error, data) {
     if (error) {
-      _gaq.push(['_trackEvent', 'Automated', 'FetchTwitchTVError', error.message]);
+      ga('send', 'event', 'Automated', 'FetchTwitchTVError', error.message);
       return;
     }
 
