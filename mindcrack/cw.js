@@ -26,7 +26,8 @@
     "sethbling": "SethBling",
     "thejimslp": "TheJims",
     "vintagebeef": "Vintage Beef",
-    "zisteau": "Zisteau"
+    "zisteau": "Zisteau",
+    "aureylian": "Aureylian"
   };
 
   var mcSorted = [];
