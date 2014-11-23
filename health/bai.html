@@ -1,15 +1,21 @@
 ---
 layout: basic
-title: Health Tools
+title: Burns Anxiety Index
 ---
 <h1>Burns Anxiety Index</h1>
 
 <form class="form-horizontal" role="form">
-  <div class="form-group">
-    <label for"baiQ1">How much</label>
-    <input type="radio" name="baiQ1" value="0">
-    <input type="radio" name="baiQ1" value="1">
-    <input type="radio" name="baiQ1" value="2">
-    <input type="radio" name="baiQ1" value="3">
-  </div>
+  <table class="table table-hover">
+    <tbody>
+    {% for q in site.data.bai_questions %}
+      <tr>
+        <td>{{ q }}</td>
+        <td><input type="radio" name="baiQ1" value="0"></td>
+        <td><input type="radio" name="baiQ1" value="1"></td>
+        <td><input type="radio" name="baiQ1" value="2"></td>
+        <td><input type="radio" name="baiQ1" value="3"></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 </form>
