@@ -1,2 +1,10 @@
-- Anxiety, nervousness, worry, or fear
-- Feeling that things around your are strange, unreal, or foggy
+- name: Anxious Feelings
+  questions:
+  - Anxiety, nervousness, worry, or fear
+  - Feeling that things around your are strange, unreal, or foggy
+- name: Anxious Thoughts
+  questions:
+  - Difficulty concentrating
+- name: Physical Symptoms
+  questions:
+  - Skipping or racing or pounding of the heart (sometimes called "palpitations")
