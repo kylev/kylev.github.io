@@ -4,26 +4,40 @@ layout: basic
 ---
 
 <h1>Practice Line Generator</h1>
+<h3>Work in Progress</h3>
 
-<p>This generates practices sheets. Or it will. It's not done yet.</p>
+<p>This generates practices sheets for calligraphy. Or it will. <em>It's not done yet.</em></p>
+
+<p>I was inspired by <a href="http://shipbrook.net/guidelines/">Jeff Lee's pointed script
+  guideline generator</a> when I realize that it was not able to give
+  me the 3:2:3 ratio lines I needed to work on <a href="http://amzn.to/1N3AtjP">Mastering
+  Copperplate Calligraphy</a> by Winters. Right now it is hard-coded
+  to supply only the lines I need fo practice. I intend to expand it
+  to have presets for popular methods, as well as a more flexible and
+  prettier output.</p>
 
 <div class="row"><div class="col-md-6">
   <form id="lines">
-    <select name="paper">
-      <option value="a4">A4</option>
-      <option value="letter" selected>US Letter</option>
-    </select>
+    <div class="form-group">
+      <label for="paper">Paper</label>
+      <select name="paper" id="paper" class="form-control">
+        <option value="a4">A4</option>
+        <option value="letter" selected>US Letter</option>
+      </select>
+    </div>
 
-    <select name="orientation">
-      <option value="portrait">Portrait</option>
-      <option value="landscape" selected>Landscape</option>
-    </select>
+    <div class="form-group">
+      <label for="orientation">Orientation</label>
+      <select name="orientation" id="orientation" class="form-control">
+        <option value="portrait">Portrait</option>
+        <option value="landscape" selected>Landscape</option>
+      </select>
+    </div>
 
-    <button type="button" onClick="updatePdf();"">Update Preview</button>
+    <button type="button" onClick="updatePdf();"">Generate PDF</button>
   </form>
 </div><div class="col-md-6">
-  <button type="button" onClick="savePdf();">Download PDF</button>
-  <iframe class="preview-pane" width="100%" height="60%"></iframe><br />
+  <iframe class="preview-pane" width="100%"></iframe><br />
 </div></div>
 
 <script src="bundle.js"></script>
