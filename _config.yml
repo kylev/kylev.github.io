@@ -1,0 +1,3 @@
+highlighter: pygments
+exclude:
+  - lines/node_modules/
