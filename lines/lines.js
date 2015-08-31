@@ -8,6 +8,7 @@ var colors = ['green', 'black', 'black', 'red'];
 function updatePdf() {
   var paper = $('#lines [name=paper]').val();
   var orientation = $('#lines [name=orientation]').val();
+  var xHeight = $('#lines [name=xHeight]').val() * 1;
 
   var newDoc = new PDFDocument({
     size: paper,
@@ -23,7 +24,6 @@ function updatePdf() {
 
   var marginAbove = 20;
   // TODO this is currently 3:2:3 for Copperplate
-  var xHeight = 18;
   var ascender = xHeight / 2 * 3;
   var descender = xHeight / 2 * 3;
   var totalHeight = marginAbove + ascender + xHeight + descender;
