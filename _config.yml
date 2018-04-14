@@ -1,3 +1,4 @@
-highlighter: pygments
+highlighter: rouge
 exclude:
   - lines/node_modules/
+google_analytics: UA-627907-4
