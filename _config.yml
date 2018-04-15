@@ -1,4 +1,3 @@
 highlighter: rouge
-exclude:
-  - lines/node_modules/
+theme: minima
 google_analytics: UA-627907-4

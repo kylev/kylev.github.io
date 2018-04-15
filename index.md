@@ -1,6 +1,6 @@
 ---
 title: kylev.github.io
-layout: basic
+layout: default
 ---
 
 # kylev.github.io
