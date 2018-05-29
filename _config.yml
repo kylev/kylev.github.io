@@ -3,6 +3,7 @@ theme: minima
 google_analytics: UA-627907-4
 twitter_username: kylev
 github_username: kylev
-title: kylev's code
+title: kylev
+author: Kyle V
 plugins:
   - jekyll-sitemap
