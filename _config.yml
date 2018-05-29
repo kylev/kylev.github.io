@@ -6,5 +6,4 @@ github_username: kylev
 title: kylev
 author: Kyle V
 plugins:
-  - jekyll-sitemap
   - jekyll-feed
