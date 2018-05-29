@@ -3,9 +3,9 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://kylev.github.io/</loc>
+        <loc>https://kylev.github.io/</loc>
     </url>
     <url>
-        <loc>http://kylev.github.io/pen/</loc>
+        <loc>https://kylev.github.io/pen/</loc>
     </url>
 </urlset>
