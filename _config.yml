@@ -7,3 +7,4 @@ title: kylev
 author: Kyle V
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
