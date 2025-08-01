@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Hello, I'm Kyle
 layout: home
 ---
 
