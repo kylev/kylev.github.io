@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-require 'json'
-require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+gem "github-pages", "~> 232", group: :jekyll_plugins
 
-gem 'github-pages', versions['github-pages']
-gem 'minima', versions['minima']
-gem 'jekyll-sitemap', versions['jekyll-sitemap']
+# group :jekyll_plugins do
+#   gem "jekyll-feed"
+#   gem "jekyll-sitemap"
+# end
