@@ -1,2 +1,4 @@
+Sitemap: https://kylev.github.io/sitemap.xml
+
 User-agent: *
-Disallow:
+Allow: /
