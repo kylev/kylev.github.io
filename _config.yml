@@ -9,4 +9,3 @@ url: "https://kylev.github.io"
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-sitemap
