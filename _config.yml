@@ -4,6 +4,7 @@ google_analytics: G-T8GEX2GPTP
 twitter_username: kylev
 github_username: kylev
 author: Kyle V
+title: kylev.github.io
 url: "https://kylev.github.io"
 plugins:
   - jekyll-feed
